@@ -1,0 +1,42 @@
+import pythoncom, pyHook
+from pymouse import PyMouse
+import  random
+
+def OnKeyboardEvent(event):
+    #print( 'MessageName:', event.MessageName)
+    #print( 'Message:', event.Message)
+    #print( 'Time:', event.Time)
+    #print( 'Window:', event.Window)
+    #print( 'WindowName:', event.WindowName)
+    global Enable
+    global m
+    global move
+    #print('Key:', event.Key)
+    #print('KeyID:', event.KeyID)
+    #print('ScanCode:', event.ScanCode)
+    #print('Extended:', event.Extended)
+    #print('Injected:', event.Injected)
+    #print('Alt', event.Alt)
+    #print('Transition', event.Transition)`
+    #print('---')
+    x = random.randint(0,5)
+    if event.KeyID == 192 :
+        Enable = 1
+        pos = m.position()
+        print(pos)
+        m.move(pos[0], pos[1]+int(move)+x)
+    else:
+        Enable = 0
+    #print(Enable)
+    # 同鼠标事件监听函数的返回值
+    return True
+move = input('input move pixel:')
+m = PyMouse()
+    # create a hook manager
+hm = pyHook.HookManager()
+    # watch for all mouse events
+hm.KeyDown = OnKeyboardEvent
+    # set the hook
+hm.HookKeyboard()
+    # wait forever
+pythoncom.PumpMessages()
