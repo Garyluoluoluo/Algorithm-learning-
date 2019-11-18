@@ -46,9 +46,23 @@ class Solution:
         return l3
 
     def addTwoNumbers2(l1: ListNode, l2: ListNode) -> ListNode:
-
-
-
+        l3 = ListNode(0)
+        if l1  == None:
+            l1 = ListNode(0)
+        if l2 == None:
+            l2 = ListNode(0)
+        if l1.next == None:
+            l3.next = l2.next
+        elif l2.next == None:
+            l3.next = l1.next
+        else:
+            l3.next = Solution.addTwoNumbers2(l1.next,l2.next)
+        if l1.val+l2.val<10 :
+            l3.val = l1.val+l2.val
+        else:
+            l3.val = l1.val + l2.val - 10
+            l3.next = Solution.addTwoNumbers2(l3.next,ListNode(1))
+        return l3
 
 
 l1 = ListNode(0)
