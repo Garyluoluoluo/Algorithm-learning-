@@ -1,0 +1,10 @@
+链表是一种递归的基础数据结构，它或者为空（null），或者是指向一个结点（node）的引用，  
+该节点含有一个泛型的元素和一个指向另一条链表的引用
+
+![Image](https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=4eaa9bce728da9775a228e79d138937c/b3b7d0a20cf431adcfd51bc44a36acaf2fdd98c3.jpg)  
+
+python链表节点的定义
+``` class ListNode:
+     def __init__(self, x):
+         self.val = x
+         self.next = None```
