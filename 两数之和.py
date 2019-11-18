@@ -39,6 +39,7 @@ def twoSum1( nums: List[int], target: int) -> List[int]:
                     print(i,j)
 
 ###第三种解法
+#使用字典类hash方式
 def twoSum2( nums: List[int], target: int) -> List[int]:
     hashmap = {}
     for i, num in enumerate(nums):
