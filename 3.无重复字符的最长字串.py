@@ -25,15 +25,48 @@
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        dic = []
+        dic = {}
         max = 0
-        for i in range(len(s)):
-            if s[i] in dic:
-                dic.pop(0)
-            dic.append(s[i])
-            if len(dic)>max:
-                max = len(dic)
-        print(dic)
+        max2 = 0
+        for strIndex, strItem in enumerate(s):
+            if strItem in dic:
+                print(s[strIndex:])
+                max = self.lengthOfLongestSubstring(Solution,s[dic[strItem]+1:])
+                break
+            else:
+                dic[strItem] = strIndex
+                if max2 < len(dic):
+                    max2 = len(dic)
+
+        if max < max2:
+            max = max2
+        print(max)
+        return max
+
+    def de_duplication(self,str):
+        dedup_str = ''
+        for char in str:
+            if not char in dedup_str:
+                dedup_str += char
+
+        return dedup_str
 
 
-Solution.lengthOfLongestSubstring(Solution,"acadedswsdda")
+    def lengthOfLongestSubstring2(self, s: str) -> int:
+        i = 2
+        flag = True
+        while(flag):
+            flag = False
+            for j in range(len(s)-i+1):
+
+                 if len(s[j:j+i]) == len(self.de_duplication(self,s[j:j+i])):
+                     flag = True
+            if flag :
+                i+=1
+        i -= 1
+        print(i)
+        return i
+
+
+
+Solution.lengthOfLongestSubstring2(Solution,'aavv3s334425678')
