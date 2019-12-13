@@ -66,7 +66,17 @@ class Solution:
         i -= 1
         print(i)
         return i
+def lengthOfLongestSubstring3(s: str) -> int:
+    d ={}
+    start = 0
+    ans = 0
+    for i,c in enumerate(s):
+        if c in d:
+            if start < d[c]+1:
+                start = d[c]+1
+        d[c]=i
+        if ans < i-start+1:
+            ans = i-start+1
+    return ans
 
-
-
-Solution.lengthOfLongestSubstring2(Solution,'aavv3s334425678')#
+print(lengthOfLongestSubstring3('aavv3s334425678'))#
